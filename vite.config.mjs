@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
-import inject from '@rollup/plugin-inject'
-import { defineConfig } from 'vite'
+import inject from '@rollup/plugin-inject';
+import { defineConfig } from 'vite';
 
 const env = process.env.NODE_ENV || 'development';
 const isDev = env === 'development';
@@ -15,6 +15,8 @@ export default defineConfig({
     }),
   ],
   build: {
+    // generate .vite/manifest.json in outDir
+    manifest: true,
     outDir: fileURLToPath(new URL('build', import.meta.url)),
     emptyOutDir: true, // also necessary for outDir
     rollupOptions: {
